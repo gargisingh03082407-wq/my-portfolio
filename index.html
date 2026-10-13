@@ -1,123 +1,405 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gargi Singh's portfolio - BTech student learning web development.">
+  <title>Gargi Singh | Developer Portfolio</title>
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6ff;
-            color: #222;
-            line-height: 1.6;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-        header {
-            background: #182848;
-            color: white;
-            text-align: center;
-            padding: 45px 15px;
-        }
+    :root {
+      --bg: #0b1020;
+      --card: #141c32;
+      --text: #f4f6ff;
+      --muted: #b5bfd6;
+      --purple: #a78bfa;
+      --blue: #60a5fa;
+    }
 
-        header h1 {
-            font-size: 36px;
-        }
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
 
-        nav {
-            background: #243b65;
-            padding: 14px;
-            text-align: center;
-        }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 12px;
-        }
+    .container {
+      width: min(1050px, 90%);
+      margin: auto;
+    }
 
-        section {
-            max-width: 850px;
-            margin: 25px auto;
-            padding: 25px;
-            background: white;
-            border-radius: 12px;
-        }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #0b1020ee;
+      border-bottom: 1px solid #27314b;
+      backdrop-filter: blur(12px);
+    }
 
-        h2 {
-            color: #243b65;
-            margin-bottom: 12px;
-        }
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-        .skill {
-            display: inline-block;
-            background: #e0e7ff;
-            padding: 8px 14px;
-            margin: 5px;
-            border-radius: 20px;
-        }
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
 
-        footer {
-            background: #182848;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-    </style>
+    .logo span {
+      color: var(--purple);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--purple);
+    }
+
+    .hero {
+      min-height: 470px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 75px 0;
+    }
+
+    .tag {
+      display: inline-block;
+      color: var(--purple);
+      background: #a78bfa18;
+      border: 1px solid #a78bfa55;
+      border-radius: 30px;
+      padding: 6px 14px;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 7vw, 64px);
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    h1 span {
+      color: var(--purple);
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 17px;
+      margin-bottom: 26px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(120deg, #8b5cf6, #3b82f6);
+      color: white;
+      padding: 11px 20px;
+      border-radius: 9px;
+      font-weight: bold;
+      margin: 4px 8px 4px 0;
+      border: 1px solid transparent;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: #52617f;
+    }
+
+    section {
+      padding: 65px 0;
+      scroll-margin-top: 70px;
+    }
+
+    .section-title {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .section-title span {
+      color: var(--purple);
+    }
+
+    .section-intro {
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid #293450;
+      border-radius: 16px;
+      padding: 25px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .skills-grid,
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .skill-icon {
+      font-size: 27px;
+      margin-bottom: 10px;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 7px 12px;
+      background: #26304a;
+      border: 1px solid #394765;
+      border-radius: 30px;
+      color: #e0e7ff;
+      font-size: 13px;
+    }
+
+    .project-number {
+      color: var(--purple);
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 18px;
+      color: var(--blue);
+      font-weight: bold;
+    }
+
+    .contact-box {
+      text-align: center;
+      padding: 35px 20px;
+    }
+
+    .contact-box p {
+      max-width: 570px;
+      margin: 12px auto 22px;
+    }
+
+    footer {
+      border-top: 1px solid #27314b;
+      padding: 25px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner {
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 65px 0;
+      }
+
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 45px 0;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-    <header>
-        <h1>Gargi Singh</h1>
-        <p>BTech Student | Aspiring Web Developer</p>
-        <p>Welcome to My Portfolio!</p>
-    </header>
-
-    <nav>
+  <nav>
+    <div class="container nav-inner">
+      <a class="logo" href="#home">Gargi<span>.</span></a>
+      <div class="nav-links">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
-    </nav>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="container hero" id="home">
+      <span class="tag">BTech Student · Learning & Building</span>
+      <h1>Hi, I'm Gargi <span>Singh.</span></h1>
+      <p>
+        I'm a third-year BTech student learning web development.
+        I'm building my technical skills through practice and projects
+        as I prepare for internship and entry-level opportunities.
+      </p>
+      <div>
+        <a class="btn" href="#projects">Explore My Projects ↗</a>
+        <a class="btn btn-outline" href="#contact">Contact Me</a>
+      </div>
+    </header>
 
     <section id="about">
-        <h2>About Me</h2>
-        <p>
-            I am a third-year BTech student.
-            I am learning web development and improving
-            my technical skills to build a career in IT.
-        </p>
+      <div class="container">
+        <h2 class="section-title">About <span>Me</span></h2>
+        <p class="section-intro">A little about my learning journey.</p>
+        <div class="card">
+          <h3>Student with a passion for technology</h3>
+          <p>
+            I am currently pursuing BTech and developing my understanding
+            of web technologies. I enjoy learning by creating small projects
+            and improving them step by step. My goal is to gain practical
+            experience and grow into a skilled technology professional.
+          </p>
+        </div>
+      </div>
     </section>
 
     <section id="skills">
-        <h2>My Skills</h2>
-        <span class="skill">HTML</span>
-        <span class="skill">CSS</span>
-        <span class="skill">Basic JavaScript</span>
-        <span class="skill">VS Code</span>
+      <div class="container">
+        <h2 class="section-title">Technical <span>Skills</span></h2>
+        <p class="section-intro">
+          Technologies and tools I am currently learning and using.
+        </p>
+
+        <div class="skills-grid">
+          <div class="card">
+            <div class="skill-icon">🌐</div>
+            <h3>Web Development</h3>
+            <p>Building and styling web pages.</p>
+            <div class="skill-list">
+              <span class="pill">HTML</span>
+              <span class="pill">CSS</span>
+              <span class="pill">Basic JavaScript</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="skill-icon">🛠️</div>
+            <h3>Tools & Learning</h3>
+            <p>Tools I use while practising and building projects.</p>
+            <div class="skill-list">
+              <span class="pill">VS Code</span>
+              <span class="pill">GitHub</span>
+              <span class="pill">GitHub Pages</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="projects">
-        <h2>My Projects</h2>
-        <h3>Cyber Shield</h3>
-        <p>A beginner cybersecurity project.</p>
-        <p>More projects coming soon!</p>
+      <div class="container">
+        <h2 class="section-title">My <span>Projects</span></h2>
+        <p class="section-intro">
+          Projects I have worked on and am developing.
+        </p>
+
+        <div class="projects-grid">
+          <article class="card">
+            <div class="project-number">PROJECT 01</div>
+            <h3>Personal Portfolio Website</h3>
+            <p>
+              A responsive personal website made using HTML and CSS
+              to introduce myself, showcase my skills and share my work.
+            </p>
+            <div class="skill-list">
+              <span class="pill">HTML</span>
+              <span class="pill">CSS</span>
+              <span class="pill">GitHub Pages</span>
+            </div>
+            <a class="project-link" href="#home">View Portfolio ↑</a>
+          </article>
+
+          <article class="card">
+            <div class="project-number">PROJECT 02</div>
+            <h3>Cyber Shield</h3>
+            <p>
+              A cybersecurity learning project. I am continuing to develop
+              and document this project as part of my learning journey.
+            </p>
+            <div class="skill-list">
+              <span class="pill">Cybersecurity</span>
+              <span class="pill">Project Learning</span>
+            </div>
+            <p style="margin-top:16px;font-size:13px;">
+              Project details and working link will be added when available.
+            </p>
+          </article>
+        </div>
+      </div>
     </section>
 
     <section id="contact">
-        <h2>Contact Me</h2>
-        <p>Email: Add your professional email here</p>
-        <p>GitHub: github.com</p>
+      <div class="container">
+        <div class="card contact-box">
+          <h2 class="section-title">Let's <span>Connect</span></h2>
+          <p>
+            I am interested in learning, collaborating on projects
+            and exploring suitable internship opportunities.
+            Feel free to connect with me.
+          </p>
+          <a class="btn" href="https://github.com/" target="_blank"
+             rel="noopener noreferrer">GitHub ↗</a>
+          <p style="font-size:13px;margin-top:18px;">
+            Add your professional email and profile links here when ready.
+          </p>
+        </div>
+      </div>
     </section>
+  </main>
 
-    <footer>
-        <p>© 2026 Gargi Singh | My Portfolio</p>
-    </footer>
+  <footer>
+    <div class="container">
+      <p>© 2026 Gargi Singh · Personal Portfolio</p>
+      <p>Learning every day. Building step by step.</p>
+    </div>
+  </footer>
 
 </body>
 </html>
